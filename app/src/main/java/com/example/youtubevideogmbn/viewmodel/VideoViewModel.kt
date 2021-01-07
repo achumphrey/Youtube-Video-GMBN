@@ -22,7 +22,7 @@ class VideoViewModel @Inject constructor(private val repo: VideoRepository) : Vi
         disposable.add(
             repo.getVideoListData()
                 .subscribe({
-                    if (it == null) {
+                    if (it.items.isEmpty()) {
                         errorMessage.value = "No Data Found!"
                         loadingState.value = LoadingState.ERROR
                     } else {
