@@ -1,5 +1,6 @@
 package com.example.youtubevideogmbn.data.remote
 
+import com.example.youtubevideogmbn.data.Constants
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -8,8 +9,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 class VideoClient {
-
-    companion object {const val BASE_URL = "https://www.googleapis.com/youtube/v3/"}
 
     private fun createOkHttpClient(): OkHttpClient {
 
@@ -27,7 +26,7 @@ class VideoClient {
         get() {
 
             return   Retrofit.Builder()
-                .baseUrl(BASE_URL)
+                .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(createOkHttpClient())

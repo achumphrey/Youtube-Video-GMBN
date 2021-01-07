@@ -4,25 +4,23 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.youtubevideogmbn.adapter.VideoAdapter
 import com.example.youtubevideogmbn.adapter.VideoListener
+import com.example.youtubevideogmbn.dagger.VideoApp
 import com.example.youtubevideogmbn.data.model.Item
-import com.example.youtubevideogmbn.data.remote.VideoClient
-import com.example.youtubevideogmbn.data.remote.VideoWebService
-import com.example.youtubevideogmbn.repository.VideoRepoImpl
-import com.example.youtubevideogmbn.repository.VideoRepository
 import com.example.youtubevideogmbn.viewmodel.VideoViewModel
 import com.example.youtubevideogmbn.viewmodel.VideoViewModelFactory
 import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
+import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
+    @Inject
+    lateinit var videoViewModelFactory: VideoViewModelFactory
     private lateinit var videoViewModel: VideoViewModel
-    private lateinit var repo: VideoRepository
-    private lateinit var videoWebService: VideoWebService
     private lateinit var videoAdapter: VideoAdapter
     companion object{const val INTENT_MESSAGE = "message"}
     private val videoClickListener: VideoListener = object : VideoListener {
@@ -39,15 +37,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        VideoApp.getComponent().inject(this)
+
         setupRecyclerView()
 
-        videoWebService = VideoClient().retrofitInstance
-        repo = VideoRepoImpl(videoWebService)
-
-        videoViewModel = ViewModelProvider(
-            this,
-            VideoViewModelFactory(repo))
-            .get(VideoViewModel::class.java)
+        videoViewModel =
+            ViewModelProviders.of(this, videoViewModelFactory)
+                .get(VideoViewModel::class.java)
 
         videoViewModel.fetchVideoList()
 

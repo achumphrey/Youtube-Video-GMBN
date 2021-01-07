@@ -6,8 +6,9 @@ import com.example.youtubevideogmbn.data.model.Item
 import com.example.youtubevideogmbn.repository.VideoRepository
 import io.reactivex.disposables.CompositeDisposable
 import java.net.UnknownHostException
+import javax.inject.Inject
 
-class VideoViewModel(private val repo: VideoRepository) : ViewModel() {
+class VideoViewModel @Inject constructor(private val repo: VideoRepository) : ViewModel() {
 
     private val disposable: CompositeDisposable = CompositeDisposable()
     private val showData: MutableLiveData<List<Item>> = MutableLiveData()
