@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Youtube Video GMBN</string>
+    <string name="video_image">video image</string>
+    <string name="image_video">Image Video</string>
+    <string name="video_title">Video Title</string>
+    <string name="duration_label">Duration Lable</string>
+    <string name="duration">Duration</string>
+    <string name="duration_text">duration text</string>
+    <string name="tbd">TBD</string>
+    <string name="video_desc">Video Description</string>
+    <string name="date_published">Date Published</string>
+    <string name="date_pub_text">Date Pub Text</string>
+    <string name="dd_mm_yyyy">dd-mm-yyyy</string>
+    <string name="video_description">Video Description</string>
+    <string name="duration_value">%1$s days</string>
+
+</resources>
