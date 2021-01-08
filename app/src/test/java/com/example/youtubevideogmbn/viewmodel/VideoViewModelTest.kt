@@ -43,7 +43,7 @@ class VideoViewModelTest {
     fun setUp() {
         MockitoAnnotations.initMocks(this)
         videoViewModel = VideoViewModel(videoRepo)
-        videoViewModel.tvLiveData().observeForever(showDataObserver)
+        videoViewModel.videoLiveData().observeForever(showDataObserver)
         videoViewModel.errorMessage().observeForever(errorMessageLDObserver)
         videoViewModel.loadingState.observeForever(loadingStateLDObserver)
         thumbnails = Thumbnails(Default(2, "any", 3), High(2, "any", 3), Medium(1, "any", 3))

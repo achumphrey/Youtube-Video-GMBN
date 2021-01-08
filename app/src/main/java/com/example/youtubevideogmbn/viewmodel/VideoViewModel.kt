@@ -46,7 +46,7 @@ class VideoViewModel @Inject constructor(private val repo: VideoRepository) : Vi
         ERROR
     }
 
-    fun tvLiveData() : MutableLiveData<List<Item>> {
+    fun videoLiveData() : MutableLiveData<List<Item>> {
         return showData
     }
 

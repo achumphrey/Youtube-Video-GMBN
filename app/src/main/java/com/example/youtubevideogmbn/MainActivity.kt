@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         videoViewModel.fetchVideoList()
 
-        videoViewModel.tvLiveData().observe(this, {
+        videoViewModel.videoLiveData().observe(this, {
             videoAdapter.updateVideoList(it)
         })
 
