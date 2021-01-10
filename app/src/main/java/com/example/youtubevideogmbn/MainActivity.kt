@@ -1,3 +1,5 @@
+@file:Suppress("DEPRECATION")
+
 package com.example.youtubevideogmbn
 
 import android.content.Intent
@@ -16,6 +18,7 @@ import com.google.gson.Gson
 import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
+@Suppress("DEPRECATION")
 class MainActivity : AppCompatActivity() {
 
     @Inject
