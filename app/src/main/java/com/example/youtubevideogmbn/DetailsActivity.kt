@@ -28,10 +28,12 @@ class DetailsActivity : AppCompatActivity() {
         videoDesc.text = videoItem.snippet.description
         video_title.text = videoItem.snippet.title
         datePubText.text = formatDate(videoItem.snippet.publishedAt)
+    //    datePubText.text = (videoItem.snippet.publishedAt.substring(0, 10))
 
         val duration: String? = videoItem?.let { calculateNumOfDays(videoItem.snippet.publishedAt) }
 
         duration_txt.text = getString(R.string.duration_value, duration)
+    //    duration_txt.text = String.format("%s days", duration)
 
         Picasso.get()
             .load(videoItem.snippet.thumbnails.high.url)
