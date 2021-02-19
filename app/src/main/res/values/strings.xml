@@ -13,5 +13,7 @@
     <string name="dd_mm_yyyy">dd-mm-yyyy</string>
     <string name="video_description">Video Description</string>
     <string name="duration_value">%1$s days</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
