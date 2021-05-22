@@ -4,10 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.youtubevideogmbn.data.model.Item
+import com.example.youtubevideogmbn.databinding.FragmentDetailsBinding
 import com.google.gson.Gson
 import com.squareup.picasso.Picasso
 import java.text.DateFormat
@@ -25,11 +24,8 @@ class DetailsFragment : Fragment() {
 
     private var detailObjString: String? = ""
     private lateinit var videoItem: Item
-    lateinit var videoDesc: TextView
-    lateinit var video_title: TextView
-    lateinit var datePubText: TextView
-    lateinit var imageView: ImageView
-    lateinit var duration_txt: TextView
+    private var _binding: FragmentDetailsBinding? = null
+    private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,25 +48,14 @@ class DetailsFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_details, container, false)
+        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onStart() {
         super.onStart()
-
-       val view: View? = view
-
-        if (view != null){
-
-            videoDesc = view.findViewById(R.id.videoDesc)
-            video_title = view.findViewById(R.id.video_title)
-            datePubText = view.findViewById(R.id.datePubText)
-            imageView = view.findViewById(R.id.imageView)
-            duration_txt = view.findViewById(R.id.duration_txt)
-        }
-
         displayDetails()
     }
 
@@ -109,20 +94,25 @@ class DetailsFragment : Fragment() {
 
     fun displayDetails(){
 
-        videoDesc.text = videoItem.snippet.description
-        video_title.text = videoItem.snippet.title
-        datePubText.text = formatDate(videoItem.snippet.publishedAt)
+        binding.videoDesc.text = videoItem.snippet.description
+        binding.videoTitle.text = videoItem.snippet.title
+        binding.datePubText.text = formatDate(videoItem.snippet.publishedAt)
         //    datePubText.text = (videoItem.snippet.publishedAt.substring(0, 10))
 
         val duration: String = videoItem.let { calculateNumOfDays(videoItem.snippet.publishedAt) }
 
-        duration_txt.text = getString(R.string.duration_value, duration)
+        binding.durationTxt.text = getString(R.string.duration_value, duration)
         //    duration_txt.text = String.format("%s days", duration)
 
         Picasso.get()
             .load(videoItem.snippet.thumbnails.high.url)
             .error(R.drawable.ic_launcher_background)
-            .into(imageView)
+            .into(binding.imageView)
 
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

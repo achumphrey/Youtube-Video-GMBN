@@ -1,6 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-parcelize'
 apply plugin: 'kotlin-kapt'
 
 
@@ -87,7 +87,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
 
     // Dagger
-    implementation 'com.google.dagger:dagger:2.24'
+    implementation 'com.google.dagger:dagger:2.35.1'
     kapt 'com.google.dagger:dagger-compiler:2.24'
 
     // dagger android

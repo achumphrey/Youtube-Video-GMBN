@@ -14,14 +14,14 @@ tools:context=".DetailsFragment">
     android:layout_marginBottom="5dp"
     android:contentDescription="@string/image_video"
     android:scaleType="fitXY"
-    app:layout_constraintBottom_toTopOf="@+id/video_title"
+    app:layout_constraintBottom_toTopOf="@+id/videoTitle"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
     app:layout_constraintTop_toTopOf="parent"
     tools:src="@tools:sample/backgrounds/scenic" />
 
 <TextView
-    android:id="@+id/video_title"
+    android:id="@+id/videoTitle"
     android:layout_width="0dp"
     android:layout_height="wrap_content"
     android:layout_marginStart="8dp"
@@ -49,7 +49,7 @@ tools:context=".DetailsFragment">
     android:textSize="16sp"
     app:layout_constraintBottom_toTopOf="@+id/durationLabel"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/video_title" />
+    app:layout_constraintTop_toBottomOf="@+id/videoTitle" />
 
 <TextView
     android:id="@+id/datePubText"
@@ -62,10 +62,10 @@ tools:context=".DetailsFragment">
     android:text="@string/dd_mm_yyyy"
     android:textSize="16sp"
     android:textStyle="italic"
-    app:layout_constraintBottom_toTopOf="@+id/duration_txt"
+    app:layout_constraintBottom_toTopOf="@+id/durationTxt"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toEndOf="@+id/datePublished"
-    app:layout_constraintTop_toBottomOf="@+id/video_title" />
+    app:layout_constraintTop_toBottomOf="@+id/videoTitle" />
 
 
 <TextView
@@ -82,7 +82,7 @@ tools:context=".DetailsFragment">
     app:layout_constraintTop_toBottomOf="@+id/datePublished" />
 
 <TextView
-    android:id="@+id/duration_txt"
+    android:id="@+id/durationTxt"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginStart="20dp"

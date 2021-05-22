@@ -12,10 +12,10 @@ import com.example.youtubevideogmbn.adapter.VideoAdapter
 import com.example.youtubevideogmbn.adapter.VideoListener
 import com.example.youtubevideogmbn.dagger.VideoApp
 import com.example.youtubevideogmbn.data.model.Item
+import com.example.youtubevideogmbn.databinding.ActivityMainBinding
 import com.example.youtubevideogmbn.viewmodel.VideoViewModel
 import com.example.youtubevideogmbn.viewmodel.VideoViewModelFactory
 import com.google.gson.Gson
-import kotlinx.android.synthetic.main.activity_main.*
 import javax.inject.Inject
 
 @Suppress("DEPRECATION")
@@ -23,6 +23,7 @@ class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var videoViewModelFactory: VideoViewModelFactory
+    private lateinit var binding: ActivityMainBinding
     private lateinit var videoViewModel: VideoViewModel
     private lateinit var videoAdapter: VideoAdapter
     companion object{const val INTENT_MESSAGE = "message"}
@@ -38,7 +39,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         VideoApp.getComponent().inject(this)
 
@@ -55,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         videoViewModel.errorMessage().observe(this, {
-            tvErrorMessage.text = it
+            binding.tvErrorMessage.text = it
         })
 
         videoViewModel.loadingState.observe(this, {
@@ -69,26 +71,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupRecyclerView() {
-        videoListRecView.layoutManager = LinearLayoutManager(this@MainActivity)
+        binding.videoListRecView.layoutManager = LinearLayoutManager(this@MainActivity)
         videoAdapter = VideoAdapter(mutableListOf(), videoClickListener)
-        videoListRecView.adapter = videoAdapter
+        binding.videoListRecView.adapter = videoAdapter
     }
 
     private fun displayErrorMessage() {
-        tvErrorMessage.visibility = View.VISIBLE
-        videoListRecView.visibility = View.GONE
-        progressBar.visibility = View.GONE
+        binding.tvErrorMessage.visibility = View.VISIBLE
+        binding.videoListRecView.visibility = View.GONE
+        binding.progressBar.visibility = View.GONE
     }
 
     private fun displayVideoList() {
-        tvErrorMessage.visibility = View.GONE
-        videoListRecView.visibility = View.VISIBLE
-        progressBar.visibility = View.GONE
+        binding.tvErrorMessage.visibility = View.GONE
+        binding.videoListRecView.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.GONE
     }
 
     private fun displayProgressbar() {
-        progressBar.visibility = View.VISIBLE
-        videoListRecView.visibility = View.GONE
-        tvErrorMessage.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+        binding.videoListRecView.visibility = View.GONE
+        binding.tvErrorMessage.visibility = View.GONE
     }
 }
