@@ -1,16 +1,13 @@
 package com.example.youtubevideogmbn
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
-import java.util.*
 
 
 /**
@@ -41,19 +38,19 @@ class ComentListFragment : Fragment() {
         commentListView = view?.findViewById(R.id.commentList)!!
 
         arrayAdapter = ArrayAdapter(
-            context!!.applicationContext,
+            requireContext().applicationContext,
             android.R.layout.simple_list_item_1,
             commentList
         )
         commentListView.adapter = arrayAdapter
 
         commentListView.setOnItemClickListener {
-                parent,
-                view,
+                _,
+                _,
                 position,
-                id ->
+                _ ->
             Toast.makeText(
-                context!!.applicationContext,
+                requireContext().applicationContext,
                 commentList[position],
                 Toast.LENGTH_SHORT).show()
 
