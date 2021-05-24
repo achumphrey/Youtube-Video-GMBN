@@ -13,7 +13,7 @@ import android.widget.Toast
 /**
  * A simple [Fragment] subclass.
  */
-class ComentListFragment : Fragment() {
+class CommentListFragment : Fragment() {
 
     private var commentList = arrayListOf<String>()
     lateinit var arrayAdapter: ArrayAdapter<*>

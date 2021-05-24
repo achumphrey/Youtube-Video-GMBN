@@ -31,18 +31,17 @@ class DetailsFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         // This will be null when the app is first launched.
-
-        // This will be null when the app is first launched.
         if (savedInstanceState != null) {
-            detailObjString = savedInstanceState.getString("detailobj")
+            detailObjString = savedInstanceState.getString("detailObj")
         }
     }
 
-    // To preserve the id when orientation changes
-    // usually called after onPause() and before onDestroy().
+    // To preserve the id when orientation changes, this method will
+    // be called after onPause() and before onDestroy(), in order
+    // to save the current InstantState.
     override fun onSaveInstanceState(savedInstanceState: Bundle) {
         super.onSaveInstanceState(savedInstanceState)
-        savedInstanceState.putString("detailobj", detailObjString)
+        savedInstanceState.putString("detailObj", detailObjString)
     }
 
     override fun onCreateView(
@@ -92,14 +91,14 @@ class DetailsFragment : Fragment() {
         this.videoItem = gson.fromJson(detailObjString, Item::class.java)
     }
 
-    fun displayDetails(){
+    private fun displayDetails(){
 
         binding.videoDesc.text = videoItem.snippet.description
         binding.videoTitle.text = videoItem.snippet.title
         binding.datePubText.text = formatDate(videoItem.snippet.publishedAt)
         //    datePubText.text = (videoItem.snippet.publishedAt.substring(0, 10))
 
-        val duration: String = videoItem.let { calculateNumOfDays(videoItem.snippet.publishedAt) }
+        val duration: String = calculateNumOfDays(videoItem.snippet.publishedAt)
 
         binding.durationTxt.text = getString(R.string.duration_value, duration)
         //    duration_txt.text = String.format("%s days", duration)

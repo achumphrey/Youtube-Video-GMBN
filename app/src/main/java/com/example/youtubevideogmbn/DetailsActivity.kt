@@ -20,7 +20,7 @@ class DetailsActivity : AppCompatActivity() {
 
     }
 
-    fun initializeFragment(){
+    private fun initializeFragment(){
 
         // The fragment instance is created by retrieving the reference from
         // the layout's Fragment tag using the FragmentManager. Same can be

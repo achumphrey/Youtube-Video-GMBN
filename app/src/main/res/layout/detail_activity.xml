@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/fragComment"
-        android:name="com.example.youtubevideogmbn.ComentListFragment"
+        android:name="com.example.youtubevideogmbn.CommentListFragment"
         android:layout_width="match_parent"
         android:layout_height="250dp"
         android:layout_marginTop="5dp"
