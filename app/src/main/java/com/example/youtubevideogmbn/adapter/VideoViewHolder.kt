@@ -6,17 +6,23 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.youtubevideogmbn.R
 import com.example.youtubevideogmbn.data.model.Item
+import com.squareup.picasso.Picasso
 
-class VideoViewHolder (item: View): RecyclerView.ViewHolder(item) {
+class VideoViewHolder (viewItem: View): RecyclerView.ViewHolder(viewItem) {
 
-    val imageV : ImageView = item.findViewById(R.id.videoThumb)
-    val videoTitle : TextView = item.findViewById(R.id.videoTitle)
+    private val imageV : ImageView = viewItem.findViewById(R.id.videoThumb)
+    private val videoTitle : TextView = viewItem.findViewById(R.id.videoTitle)
 
-    fun bindItem(video: Item, listener: VideoListener) {
+    fun bindItem(videoItem: Item, listener: VideoListener) {
+
+        videoTitle.text = videoItem.snippet.title
+        Picasso.get()
+            .load(videoItem.snippet.thumbnails.default.url)
+            .error(R.drawable.ic_launcher_background)
+            .into(imageV)
 
         itemView.setOnClickListener {
-            listener.videoClickListener(video)
+            listener.videoClickListener(videoItem)
         }
-
     }
 }

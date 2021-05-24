@@ -59,6 +59,6 @@ class ComentListFragment : Fragment() {
 
     private fun makeCommentList() {
         for (i in 1..10)
-            commentList.add("Comment " + i + " by Author " + i)
+            commentList.add("Comment $i by Author $i")
     }
 }

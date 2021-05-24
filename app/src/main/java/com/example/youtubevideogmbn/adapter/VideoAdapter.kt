@@ -6,7 +6,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.youtubevideogmbn.R
 import com.example.youtubevideogmbn.data.model.Item
-import com.squareup.picasso.Picasso
 
 class VideoAdapter(private val videoList: MutableList<Item>,
                    private val listener: VideoListener):
@@ -21,11 +20,6 @@ class VideoAdapter(private val videoList: MutableList<Item>,
 
     override fun onBindViewHolder(holder: VideoViewHolder, position: Int) {
         holder.bindItem(videoList[position], listener)
-        holder.videoTitle.text = videoList[position].snippet.title
-        Picasso.get()
-            .load(videoList[position].snippet.thumbnails.default.url)
-            .error(R.drawable.ic_launcher_background)
-            .into(holder.imageV)
     }
 
     override fun getItemCount(): Int {
@@ -37,5 +31,4 @@ class VideoAdapter(private val videoList: MutableList<Item>,
         videoList.addAll(newVideoList)
         notifyDataSetChanged()
     }
-
 }
