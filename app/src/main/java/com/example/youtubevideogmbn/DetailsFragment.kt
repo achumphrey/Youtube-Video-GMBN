@@ -93,9 +93,9 @@ class DetailsFragment : Fragment() {
 
     private fun displayDetails(){
 
-        binding.videoDesc.text = videoItem.snippet.description
-        binding.videoTitle.text = videoItem.snippet.title
-        binding.datePubText.text = formatDate(videoItem.snippet.publishedAt)
+        binding.desc = videoItem.snippet.description
+        binding.title = videoItem.snippet.title
+        binding.dateTxtPublished = formatDate(videoItem.snippet.publishedAt)
         //    datePubText.text = (videoItem.snippet.publishedAt.substring(0, 10))
 
         val duration: String = calculateNumOfDays(videoItem.snippet.publishedAt)
