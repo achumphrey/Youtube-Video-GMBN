@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.youtubevideogmbn.data.model.Item
 import com.example.youtubevideogmbn.databinding.FragmentDetailsBinding
@@ -49,7 +50,11 @@ class DetailsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+        _binding = DataBindingUtil.inflate(inflater,
+            R.layout.fragment_details,
+            container, false)
+      //  _binding = FragmentDetailsBinding.inflate(inflater, container, false)
+
         return binding.root
     }
 
