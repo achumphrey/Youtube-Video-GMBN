@@ -105,7 +105,7 @@ class DetailsFragment : Fragment() {
 
         val duration: String = calculateNumOfDays(videoItem.snippet.publishedAt)
 
-        binding.durationTxt.text = getString(R.string.duration_value, duration)
+        binding.durationValue = getString(R.string.duration_value, duration)
         //    duration_txt.text = String.format("%s days", duration)
 
         Picasso.get()
