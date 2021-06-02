@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import com.example.youtubevideogmbn.data.model.Item
 import com.example.youtubevideogmbn.databinding.FragmentDetailsBinding
 import com.google.gson.Gson
-import com.squareup.picasso.Picasso
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -53,7 +52,6 @@ class DetailsFragment : Fragment() {
         _binding = DataBindingUtil.inflate(inflater,
             R.layout.fragment_details,
             container, false)
-      //  _binding = FragmentDetailsBinding.inflate(inflater, container, false)
 
         return binding.root
     }
@@ -80,14 +78,6 @@ class DetailsFragment : Fragment() {
         return numDays.toString()
     }
 
-    private fun formatDate(date: String): String{
-        val pattern = "yyyy-MM-dd"
-        val sdf: DateFormat = SimpleDateFormat(pattern, Locale.UK)
-        val dateParsed: Date? =  sdf.parse(date)
-
-        return dateParsed?.let { sdf.format(it) }?: " "
-    }
-
     // This will set the object on the list or index
     // to retrieve the object instance.
     fun setDetailObjString(objString: String) {
@@ -98,21 +88,10 @@ class DetailsFragment : Fragment() {
 
     private fun displayDetails(){
 
-        binding.desc = videoItem.snippet.description
-        binding.title = videoItem.snippet.title
-        binding.dateTxtPublished = formatDate(videoItem.snippet.publishedAt)
-        //    datePubText.text = (videoItem.snippet.publishedAt.substring(0, 10))
-
+        binding.videoObj = videoItem
         val duration: String = calculateNumOfDays(videoItem.snippet.publishedAt)
-
         binding.durationValue = getString(R.string.duration_value, duration)
         //    duration_txt.text = String.format("%s days", duration)
-
-        Picasso.get()
-            .load(videoItem.snippet.thumbnails.high.url)
-            .error(R.drawable.ic_launcher_background)
-            .into(binding.imageView)
-
     }
 
     override fun onDestroyView() {

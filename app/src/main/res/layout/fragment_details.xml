@@ -5,16 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
-            name="title"
-            type="String" />
-        <variable
-            name="desc"
-            type="String" />
-        <variable
-            name="dateTxtPublished"
-            type="String" />
+            name="videoObj"
+            type="com.example.youtubevideogmbn.data.model.Item" />
         <variable
             name="durationValue"
             type="String" />
@@ -29,6 +22,7 @@
             android:id="@+id/imageView"
             android:layout_width="match_parent"
             android:layout_height="220dp"
+            imageUrl="@{videoObj.snippet.thumbnails.high.url}"
             android:layout_marginBottom="5dp"
             android:contentDescription="@string/image_video"
             android:scaleType="fitXY"
@@ -42,12 +36,12 @@
             android:id="@+id/videoTitle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:text="@{videoObj.snippet.title}"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="5dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:contentDescription="@string/video_title"
-            android:text="@{title}"
             android:textSize="15sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/durationLabel"
@@ -73,10 +67,10 @@
             android:id="@+id/datePubText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            dateTxt="@{videoObj.snippet.publishedAt}"
             android:layout_marginStart="20dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/date_pub_text"
-            android:text="@{dateTxtPublished}"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             android:textStyle="italic"
@@ -119,11 +113,11 @@
             android:id="@+id/videoDesc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            htmlTxt="@{videoObj.snippet.description}"
             android:layout_marginStart="8dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="8dp"
             android:contentDescription="@string/video_desc"
-            android:text="@{desc}"
             android:textColor="@color/colorPrimary"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
