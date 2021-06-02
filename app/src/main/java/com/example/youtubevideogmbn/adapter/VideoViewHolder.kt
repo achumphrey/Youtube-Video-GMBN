@@ -12,7 +12,7 @@ class VideoViewHolder (private val binding: VideoListItemBinding): RecyclerView.
 
         binding.title = videoItem.snippet.title
         Picasso.get()
-            .load(videoItem.snippet.thumbnails.default.url)
+            .load(videoItem.snippet.thumbnails.high.url)
             .error(R.drawable.ic_launcher_background)
             .into(binding.videoThumb)
 
