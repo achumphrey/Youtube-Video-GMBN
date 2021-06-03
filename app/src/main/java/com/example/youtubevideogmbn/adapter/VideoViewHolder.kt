@@ -6,7 +6,8 @@ import com.example.youtubevideogmbn.data.model.Item
 import com.example.youtubevideogmbn.databinding.VideoListItemBinding
 import com.squareup.picasso.Picasso
 
-class VideoViewHolder (private val binding: VideoListItemBinding): RecyclerView.ViewHolder(binding.root) {
+class VideoViewHolder (private val binding: VideoListItemBinding):
+    RecyclerView.ViewHolder(binding.root) {
 
     fun bindItem(videoItem: Item, listener: VideoListener) {
 

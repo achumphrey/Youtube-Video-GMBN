@@ -28,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var videoViewModel: VideoViewModel
     private lateinit var videoAdapter: VideoAdapter
     companion object{const val INTENT_MESSAGE = "message"}
+
     private val videoClickListener: VideoListener = object : VideoListener {
 
         override fun videoClickListener(video: Item) {

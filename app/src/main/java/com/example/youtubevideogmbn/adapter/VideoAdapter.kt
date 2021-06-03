@@ -14,9 +14,11 @@ class VideoAdapter(private val videoList: MutableList<Item>,
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder {
         val layoutInflater: LayoutInflater = LayoutInflater.from(parent.context)
-        val binding: VideoListItemBinding = DataBindingUtil.inflate(layoutInflater,
+        val binding: VideoListItemBinding = DataBindingUtil.inflate(
+            layoutInflater,
             R.layout.video_list_item,
-            parent, false)
+            parent,
+            false)
 
         return VideoViewHolder(binding)
     }

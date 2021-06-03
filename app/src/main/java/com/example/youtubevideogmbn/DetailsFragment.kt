@@ -16,10 +16,6 @@ import java.time.ZoneId
 import java.util.*
 import java.util.concurrent.TimeUnit
 
-
-/**
- * A simple [Fragment] subclass.
- */
 class DetailsFragment : Fragment() {
 
     private var detailObjString: String? = ""
@@ -45,13 +41,17 @@ class DetailsFragment : Fragment() {
     }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        _binding = DataBindingUtil.inflate(inflater,
+        _binding = DataBindingUtil.inflate(
+            inflater,
             R.layout.fragment_details,
-            container, false)
+            container,
+            false
+        )
 
         return binding.root
     }
@@ -62,7 +62,7 @@ class DetailsFragment : Fragment() {
     }
 
     //Calculate number of days
-    private fun calculateNumOfDays(date: String?) : String{
+    private fun calculateNumOfDays(date: String?): String {
         val pattern = "yyyy-MM-dd"
         val sdf: DateFormat = SimpleDateFormat(pattern, Locale.UK)
 
@@ -70,7 +70,7 @@ class DetailsFragment : Fragment() {
         val today: LocalDate = LocalDate.now(z)
         val currentDateValue: Date? = sdf.parse("$today")
 
-        val startDateValue: Date? = date?.let { sdf.parse(date)} ?: currentDateValue
+        val startDateValue: Date? = date?.let { sdf.parse(date) } ?: currentDateValue
 
         val diff: Long = currentDateValue!!.time - (startDateValue!!.time)
         val numDays = TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS)
@@ -86,12 +86,11 @@ class DetailsFragment : Fragment() {
         this.videoItem = gson.fromJson(detailObjString, Item::class.java)
     }
 
-    private fun displayDetails(){
-
+    private fun displayDetails() {
         binding.videoObj = videoItem
         val duration: String = calculateNumOfDays(videoItem.snippet.publishedAt)
-        binding.durationValue = getString(R.string.duration_value, duration)
-        //    duration_txt.text = String.format("%s days", duration)
+        //    binding.durationValue = getString(R.string.duration_value, duration)
+        binding.durationValue = String.format("%s days", duration)
     }
 
     override fun onDestroyView() {
